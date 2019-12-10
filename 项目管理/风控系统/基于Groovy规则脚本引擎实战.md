@@ -36,7 +36,7 @@ GroovyShell多用于推求对立的脚本或表达式，如果换成相互关联
 <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.5.8</version>
+            <version>2.4.17</version>
 </dependency>
 
 ```
@@ -96,6 +96,7 @@ class %s implements EngineGroovyModuleRule {
 ```java
     GroovyClassLoader classLoader = new GroovyClassLoader();
     Class<EngineGroovyModuleRule> aClass = classLoader.parseClass(fullScript);
+    //groovy 实体类
     Context context = new Context();
     context.setAmount(30000);
     try {
