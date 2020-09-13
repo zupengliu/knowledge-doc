@@ -1,4 +1,4 @@
-## springboot多模块项目下，子模块调用报错：程序包xxxxx不存在
+## 问题1：springboot多模块项目下，子模块调用报错：程序包xxxxx不存在
 
 ### 1. 场景描述
 
@@ -27,7 +27,7 @@ Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.3.2:comp
 
 把父工程中该插件删除，然后在具体的项目工程添加该插件，就正常了
 
-## actuator 工具提示HttpMediaTypeNotAcceptableException: Could not find acceptable representation
+## 问题2：actuator 工具提示HttpMediaTypeNotAcceptableException: Could not find acceptable representation
 
 ### 问题描述
 
@@ -75,4 +75,34 @@ public class WebConfig implements WebMvcConfigurer {
     }
 }
 ```
+
+
+
+## 问题3：Springboot多模块项目，引用子项目的mapper中的xml文件
+
+**我的bootstrap.xml配置文件**
+
+```pro
+mybatis:
+  type-aliases-package: cn.com.hopson.hft.**.**.domain
+  mapper-locations: classpath:mapper/*.xml
+```
+
+**错误描述：**
+
+```java
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): cn.com.hopson.hft.trade.persistence.mapper.OrderDetailMapper.batchInsert
+```
+
+**解决方案：**“classpath”后新增*号
+
+```pro
+mybatis:
+  type-aliases-package: cn.com.hopson.hft.**.**.domain
+  mapper-locations: classpath*:mapper/*.xml
+```
+
+
+
+
 
